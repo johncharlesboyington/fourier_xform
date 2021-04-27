@@ -14,6 +14,7 @@ def node_finder(N, points, image_name):
     # plot the clustered data
     # initialize plotting environment
     fig = plt.figure(0)
+    fig.set_size_inches(10, 10)
     ax = fig.add_subplot(111)
 
     # create colors
@@ -75,7 +76,7 @@ def node_finder(N, points, image_name):
             
 
             # if it's less, it's a connection
-            if (relevent_dist * 1.1) > node_dist:
+            if (relevent_dist * 1.2) > node_dist:
                 connection.append(j)
                 
         if not connection:
