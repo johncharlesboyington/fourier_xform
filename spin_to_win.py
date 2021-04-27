@@ -44,7 +44,7 @@ def spin(N, f, ani_name):
     """
 
     # the time ordinates used in the animation (3 full rotations)
-    times = np.linspace(0, 3, 500)
+    times = np.linspace(0, 2, 500)
 
     # function for selecting the terms given the desired order
     # ex. if N=5, terms are (0, 1, -1, 2, -2)

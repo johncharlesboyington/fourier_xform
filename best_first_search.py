@@ -13,6 +13,9 @@ def distance(a, b):
 def best_first_search(nodes, connections, image_name):
     """best_first_search"""
 
+    # used to print debugging info to study the algorithm!
+    debug = False
+
     # containers
     node_indices = list(range(len(nodes)))
     final_path = []
@@ -20,20 +23,30 @@ def best_first_search(nodes, connections, image_name):
     current_node = node_list[0]
     node_list.remove(current_node)
     final_path.append(current_node)
+    home_flag = False
 
     # start the loop
     while node_list:
-        print('\n\n\n -------------------------------------------------------')
-        print('Node List:', node_list)
+        if debug:
+            print('\n\n\n --------------------------------------------------')
+            print('Node List:', node_list)
 
         # define the start
         start_node = final_path[-1]
-        print('Start:', start_node)
+        if debug:
+            print('Start:', start_node)
 
         # define the goal
         goal_node = node_list[np.argmin([distance(nodes[start_node], nodes[g]) for g in node_list])]
         node_list.remove(goal_node)
-        print('Goal:', goal_node)
+        if debug:
+            print('Goal:', goal_node)
+
+        # this is to make sure the algorithm gets back to the beginning!
+        # this avoids some weird lines being drawn back to the start
+        if not home_flag and len(node_list) == 0:
+            home_flag = True
+            node_list.append(final_path[0])
 
         # best first search
         start_distance = distance(nodes[start_node], nodes[goal_node])
@@ -44,12 +57,14 @@ def best_first_search(nodes, connections, image_name):
 
             # get the adjacent nodes
             adjacent_nodes = connections[open_list[0][0]]
-            print('\nCurrent Node:', open_list[0][0])
-            print('Adjacent Nodes:', adjacent_nodes)
+            if debug:
+                print('\nCurrent Node:', open_list[0][0])
+                print('Adjacent Nodes:', adjacent_nodes)
 
             # move the current search node to the closed list
             closed_list.append(open_list.pop(0)[0])
-            print('Closed List:', closed_list)
+            if debug:
+                print('Closed List:', closed_list)
 
             # add the adjacent nodes and their heuristics to the open list
             for node in adjacent_nodes:
@@ -58,7 +73,8 @@ def best_first_search(nodes, connections, image_name):
 
             # order by distance
             open_list.sort(key=lambda x: x[1])
-            print('Sorted Open List:', open_list)
+            if debug:
+                print('Sorted Open List:', open_list)
 
             # if we find the goal, great
             if goal_node == open_list[0][0]:
@@ -66,7 +82,8 @@ def best_first_search(nodes, connections, image_name):
                 # calculate and return the path back to the start
                 path_home = [goal_node]
                 while path_home[-1] != start_node:
-                    print('Path Home:', path_home)
+                    if debug:
+                        print('Path Home:', path_home)
                     for node in connections[path_home[-1]]:
                         if node in closed_list:
                             path_home.append(node)
@@ -93,8 +110,8 @@ def best_first_search(nodes, connections, image_name):
 
 
 if __name__ == '__main__':
-    img_name = 'maple'
+    img_name = 'czechia'
     points = img_to_dots(img_name)
-    nodes, connections = node_finder(200, points, img_name)
+    nodes, connections = node_finder(100, points, img_name)
     ordered_nodes = best_first_search(nodes, connections, img_name)
     spin(len(ordered_nodes), ordered_nodes, img_name)
