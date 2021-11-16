@@ -120,5 +120,5 @@ def img_to_dots(image_name):
 
 
 if __name__ == '__main__':
-    """You can run this by itself for debugging."""
+    """You can run this script by itself for debugging."""
     img_to_dots('peace')
