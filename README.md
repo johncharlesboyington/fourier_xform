@@ -20,7 +20,7 @@ in the animation are each moving at a fixed speed. The first segment has a
 rotational velocity of w=0, the next of w=1, then w=-1, then w=2, and so on.
 By themselves, they would just be drawing circles. However, we can add
 them together, and by only varying their length and starting angle,
-can produce an approximation for any ordered set of points (like an outline).
+can produce an approximation for *ANY* ordered set of points!
 
 
 ### Motivation
