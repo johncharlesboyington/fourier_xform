@@ -6,44 +6,31 @@ from node_finder import node_finder
 
 
 def compute_coefficients(ns, data):
-    """ """
-
-    #
+    """Used by the spin function, this computes the coefficients for
+    the fourrier transform. The math here is fairly straightforward,
+    but for a demonstration for how one arrives at the equation used,
+    I recommend visiting https://www.youtube.com/watch?v=r6sGWTCMz2k&vl=en
+    to see it worked out."""
     cs = []
     for n in ns:
-
-        #
         s = complex(0, 0)
-
-        # 
         for i, datum in enumerate(data):
-
-            # 
             t = i / len(data)
             dt = 1 / len(data)
             d = complex(*datum)
-
-            # 
             s += d * np.exp(-n * 2 * np.pi * complex(0, 1) * t) * dt
-
-        # 
         cs.append(s)
     return(cs)
 
 
 def spin(N, f, ani_name):
-    """Produces a .gif of a fourier approximation of a given set of points.
-
-    inputs
-        N - number of fourier terms
-        f - list of points to be approximated
-        ani_name - the desired name of the animation
-
-    returns
-        None
-    """
-
-    # the time ordinates used in the animation (3 full rotations)
+    """Produces a .gif of a fourier approximation of a given set of points,
+    using N, a number of fourier terms, as well as f, a list of points to
+    be approximated. ani_name is the desired name of the animation. The
+    docstring for compute_coefficients contains the youtube video which
+    demonstrates the maths used in this approximation."""
+    # the time ordinates used in the animation
+    # this produces 3 full rotations
     times = np.linspace(0, 2, 500)
 
     # function for selecting the terms given the desired order
@@ -55,7 +42,8 @@ def spin(N, f, ani_name):
     # computes the coefficients given the list of points
     cs = compute_coefficients(ns, f)
 
-    # function for computing the individual terms
+    # function for computing the individual terms now that we've got the
+    # coefficients
     def term(c_n, n, t):
         """Returns the nth term for the series, given coefficients and the
         timestep."""
@@ -109,57 +97,55 @@ def spin(N, f, ani_name):
 
     # a function used in mpl animation
     def animate(i):
-        """ """
-
-        # 
+        """This function is necessary to do an mpl animation. The variable
+        i is used to update the image."""
+        # this updates the spaghetti arms
         seg.set_xdata(data[i][0])
         seg.set_ydata(data[i][1])
 
-        # 
+        # this updates the endpoints on the spaghetti (fourier arms)
         point.set_xdata(data[i][0][-1])
         point.set_ydata(data[i][1][-1])
 
-        # 
+        # this updates the actual line of the image
+        # this includes storing the previous lines, so
+        # we continuously update the image or 'draw' it
         line_x.append(data[i][0][-1])
         line_y.append(data[i][1][-1])
         line.set_xdata(line_x)
         line.set_ydata(line_y)
-
-        # 
-        #ax.plot(data[i][0][-1], data[i][1][-1], c='mediumspringgreen',
-        #        marker='o', ms=2)[0]
         return
 
-    # 
+    # initialize the animation environment
     fig.set_size_inches(10, 10)
+
+    # this controls the animation
+    # all integers are in ms (I believe)
     ani = animation.FuncAnimation(fig, animate, frames=len(times),
                                   interval=50, repeat_delay=2000)
 
-    # 
+    # and finally, save the animation as a .gif
     ani.save('image/' + ani_name + '.gif')
     return
 
 
 def test_circle_function():
-    """ """
-    
-    # 
+    """This function produces points in a circle, for use in
+    debugging the spin function."""
     r = 5
     theta = np.linspace(0, 2 * np.pi, 7)
     x = r * np.cos(theta)
     y = r * np.sin(theta)
-
-    # 
     sf = np.max(x + y)
     x /= sf
     y /= sf
-
-    # 
     return list(zip(x, y))
 
 
 if __name__ == '__main__':
-    # 
+    """You can run this script by itself for debugging, though
+    this requires running the other functions, too, to produce
+    inputs for this one."""
     N = 50
     points = img_to_dots('peace')
     nodes, _ = node_finder(points, 'peace')
