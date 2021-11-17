@@ -85,6 +85,31 @@ N=80                       |  N=200
 ![](image/maple_80.gif)    |  ![](image/maple_200.gif)
 
 
+### Try it Yourself!
+Before running the following python modules need to be installed in your
+environment:
+
+`numpy`
+`matplotlib`
+`sklearn`
+`seaborn`
+`pillow`
+`skimage`
+`six`
+
+Begin by placing an image into the `image/` folder.
+
+Then, from `fourier_xform/`, run the following:
+```python
+from main import fxform
+fxform('image_name_without_path_or_extension')
+```
+
+To change the approximation order to, say, 50, use the following argument:
+```python
+fxform('image_name', N=50)
+```
+
 
 ### License
 GNU GENERAL PUBLIC LICENSE
