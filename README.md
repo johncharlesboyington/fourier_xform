@@ -48,7 +48,6 @@ Let's begin with an image
 # how order matters
 
 N=5                        |  N=10
-:-------------------------:|:-------------------------:
 ![](image/maple_5.gif)     |  ![](image/maple_10.gif)
 N=20                       |  N=40
 ![](image/maple_20.gif)    |  ![](image/maple_40.gif)
