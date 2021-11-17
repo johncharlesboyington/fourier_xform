@@ -69,7 +69,7 @@ into a final path, which is then traced by the Fourier approximator.
 
 
 
-# Approximation Order
+### Approximation Order
 When performing the approximation, the number of terms (order) matters.
 The more complexity one wishes to represent, the more terms will be necessary.
 
@@ -84,7 +84,7 @@ N=20                       |  N=40
 N=80                       |  N=200
 ![](image/maple_80.gif)    |  ![](image/maple_200.gif)
 
-# cases that don't work so well
 
 
-# license somewhere
+### License
+GNU GENERAL PUBLIC LICENSE
