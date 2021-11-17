@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from picture_perfect import img_to_dots
+from img_to_dots import img_to_dots
 from node_finder import node_finder
-from spin_to_win import spin
+from spin import spin
 
 
 def distance(a, b):

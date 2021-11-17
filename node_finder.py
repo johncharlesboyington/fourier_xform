@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 import seaborn as sns
-from picture_perfect import img_to_dots
+from img_to_dots import img_to_dots
 
 
 def node_finder(N, points, image_name):

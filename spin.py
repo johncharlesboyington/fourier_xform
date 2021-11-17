@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from picture_perfect import img_to_dots
+from img_to_dots import img_to_dots
 from node_finder import node_finder
 
 
