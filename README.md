@@ -28,8 +28,7 @@ The original motivation for the project came from the following video from
 3Blue1Brown:
 https://www.youtube.com/watch?v=r6sGWTCMz2k&vl=en
 
-
-which provides a fantastic explanation of the math driving this type
+This provides a fantastic explanation of the math driving this type
 of approximation and gives some beautiful examples of it in action.
 
 However, the approximation required one to have access to an ordered set
@@ -48,9 +47,17 @@ Let's begin with an image
 
 # how order matters
 
-Solarized dark             |  Solarized Ocean
+N=5                        |  N=10
 :-------------------------:|:-------------------------:
-![](image/maple_5.gif)  |  ![](image/maple_10.gif)
+![](image/maple_5.gif)     |  ![](image/maple_10.gif)
+:-------------------------:|:-------------------------:
+N=20                       |  N=40
+:-------------------------:|:-------------------------:
+![](image/maple_20.gif)    |  ![](image/maple_40.gif)
+:-------------------------:|:-------------------------:
+N=80                       |  N=200
+:-------------------------:|:-------------------------:
+![](image/maple_80.gif)    |  ![](image/maple_200.gif)
 
 # cases that don't work so well
 
