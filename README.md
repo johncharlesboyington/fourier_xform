@@ -20,7 +20,7 @@ in the animation are each moving at a fixed speed. The first segment has a
 rotational velocity of w=0, the next of w=1, then w=-1, then w=2, and so on.
 By themselves, they would just be drawing circles. However, we can add
 them together, and by only varying their length and starting angle,
-can produce an approxiamtion for any ordered set of points (like an outline).
+can produce an approximation for any ordered set of points (like an outline).
 
 
 ### Motivation
@@ -97,9 +97,10 @@ environment:
 `skimage`
 `six`
 
-Begin by placing an image into the `image/` folder.
+Begin by placing an image into the `image/` folder. The image must be a
+`.png` or a `.jpg`.
 
-Then, from `fourier_xform/`, run the following:
+Then, from `fourier_xform/`, run the following in python:
 ```python
 from main import fxform
 fxform('image_name_without_path_or_extension')
