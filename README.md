@@ -45,7 +45,11 @@ them to produce the Fourier approximation.
 Let's begin with an image 
 
 
-# how order matters
+# Approximation Order
+When 
+
+The following table shows how the approximation of a maple leaf improves
+as order is increased.
 
 N=5                        |  N=10
 :-------------------------:|:-------------------------:
