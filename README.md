@@ -46,7 +46,8 @@ Let's begin with an image
 
 
 # Approximation Order
-When 
+When performing the approximation, the number of terms (order) matters.
+The more complexity one wishes to represent, the more terms will be necessary.
 
 The following table shows how the approximation of a maple leaf improves
 as order is increased.
