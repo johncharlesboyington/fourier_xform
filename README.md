@@ -11,6 +11,7 @@ of a deer:
 ![alt text](image/deer.jpg)
 
 and convert it into an animation like so:
+
 ![alt text](image/deer.gif)
 
 This may appear to be a strange way to draw an outline, but the real
@@ -43,9 +44,11 @@ them to produce the Fourier approximation.
 ### How it Works
 
 Let's begin with an image
+
 ![alt text](image/apple.jpg)
 
 First, the algorithm uses a Sobel filter to detect edges in the image.
+
 ![alt text](image/apple_elevation.png)
 
 Then, using K-Means clustering, the point comprising the edges are collapsed
@@ -56,10 +59,12 @@ Also, 'connections' are created between points which are close.
 The path of the final is forced to follow along these connections.
 This helps guarantee that the final path traced by the Fourier approximator
 will be coherent and more likely follow the true outline of the image.
+
 ![alt text](image/apple_nodes.png)
 
 Finally, a best-first search algorithm is used to connect the points
 into a final path, which is then traced by the Fourier approximator.
+
 ![alt text](image/apple.gif)
 
 
