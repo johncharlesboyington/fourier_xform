@@ -42,7 +42,26 @@ them to produce the Fourier approximation.
 
 ### How it Works
 
-Let's begin with an image 
+Let's begin with an image
+![alt text](image/apple.jpg)
+
+First, the algorithm uses a Sobel filter to detect edges in the image.
+![alt text](image/apple_elevation.png)
+
+Then, using K-Means clustering, the point comprising the edges are collapsed
+into a series of nodes. This reduces the image outline to a much smaller
+number of points to be approximated.
+
+Also, 'connections' are created between points which are close.
+The path of the final is forced to follow along these connections.
+This helps guarantee that the final path traced by the Fourier approximator
+will be coherent and more likely follow the true outline of the image.
+![alt text](image/apple_nodes.png)
+
+Finally, a best-first search algorithm is used to connect the points
+into a final path, which is then traced by the Fourier approximator.
+![alt text](image/apple.gif)
+
 
 
 # Approximation Order
